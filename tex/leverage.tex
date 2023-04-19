@@ -1,0 +1,78 @@
+After selecting our model, we inspect the absolute residuals (see \cref{fig:standres}) to check for outliers. There is one obvious
+outlier which, referring back to the price map, is very cheap compared to its neighbours. The nature of the sale may have been
+different. For instance, the buyer may have been in a hurry to sell, or it could have been a transaction between family or
+friends. To determine what influence this outlier may have had on the model, we created maps for leverage values as well as Cook's
+distances (see \cref{fig:cook} and \cref{fig:lev}), and these metrics do not suggest that the extreme outlier had much influence.
+Notice in \cref{fig:lev} that the properties with the greatest leverage tend to be quite far away from other properties. With
+access to more data it may be reasonable to consider a three class split between urban/suburban/rural.
+
+In addition to the extreme outlier, however, there are 5 other moderate outliers (defined as having absolute standardized residual
+greater than three) which do align to points in the graph having more influence. We repeated the model selection process, and
+found that while the forward/backward selection step yielded similar results after removing outliers, the final model selected
+could vary slightly. However, the general conclusion on which features were relevant did not change much. The best models found
+after removing outliers are summarized in \cref{fig:n=413} and \cref{fig:n=408}.
+
+% \begin{verbatim}
+
+% Call:
+% lm(formula = as.formula(paste("log(price) ~", paste(show.best.variables(subset,
+% 	variable.count), collapse = "+"))), data = full.df.train)
+
+% Residuals:
+%  	Min   	1Q   Median   	3Q  	Max
+% -0.52200 -0.11056  0.00297  0.08976  0.80362
+
+% Coefficients:
+%                   	Estimate Std. Error t value Pr(>|t|)    
+% (Intercept)     	-5.476e+02  1.230e+02  -4.453 1.17e-05 ***
+% date             	2.737e-01  6.108e-02   4.481 1.03e-05 ***
+% age             	-1.086e-02  2.046e-03  -5.309 2.07e-07 ***
+% mrt             	-8.240e-05  1.344e-05  -6.133 2.53e-09 ***
+% stores           	5.487e+01  2.442e+01   2.247  0.02533 *  
+% `date:is.urban`  	2.474e-04  3.715e-05   6.660 1.19e-10 ***
+% `age:is.urban`   	4.854e-03  2.293e-03   2.116  0.03509 *  
+% `mrt:date:is.urban` -8.755e-08  2.785e-08  -3.144  0.00182 **
+% `stores:date`   	-2.722e-02  1.213e-02  -2.244  0.02550 *  
+% `stores:is.urban`   -5.232e-02  1.155e-02  -4.529 8.38e-06 ***
+% ---
+% Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+% Residual standard error: 0.185 on 321 degrees of freedom
+% Multiple R-squared:  0.769,    Adjusted R-squared:  0.7625
+% F-statistic: 118.7 on 9 and 321 DF,  p-value: < 2.2e-16
+
+
+
+
+
+
+
+
+% Call:
+% lm(formula = as.formula(paste("log(price) ~", paste(show.best.variables(subset,
+% 	variable.count), collapse = "+"))), data = full.df.train)
+
+% Residuals:
+%  	Min   	1Q   Median   	3Q  	Max
+% -0.49132 -0.09697  0.00571  0.09669  0.61094
+
+% Coefficients:
+%                   	Estimate Std. Error t value Pr(>|t|)    
+% (Intercept)      	3.406e+00  5.547e-02  61.406  < 2e-16 ***
+% age             	-1.466e+01  4.023e+00  -3.645 0.000312 ***
+% mrt             	-6.593e-02  4.794e-02  -1.375 0.170032    
+% `date:is.urban`  	2.618e-04  3.440e-05   7.611 3.13e-13 ***
+% `age:date`       	7.279e-03  1.998e-03   3.643 0.000315 ***
+% `age:is.urban`   	4.772e-03  2.121e-03   2.250 0.025165 *  
+% `mrt:date`       	3.270e-05  2.381e-05   1.373 0.170632    
+% `mrt:date:is.urban` -7.481e-08  2.456e-08  -3.046 0.002514 **
+% `stores:date`    	3.736e-05  4.765e-06   7.840 6.92e-14 ***
+% `stores:is.urban`   -6.479e-02  1.072e-02  -6.041 4.29e-09 ***
+% ---
+% Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+% Residual standard error: 0.1665 on 317 degrees of freedom
+% Multiple R-squared:  0.8218,    Adjusted R-squared:  0.8167
+% F-statistic: 162.4 on 9 and 317 DF,  p-value: < 2.2e-16
+
+% \end{verbatim}

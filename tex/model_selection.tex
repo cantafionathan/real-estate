@@ -1,0 +1,26 @@
+To determine the optimal number of variables to include in our model, we performed both forward and backward selection to
+determine which variable count range consistently performed well on different tests. We tested using three criteria: Mallow`s Cp,
+Bayesian Information Criteria, and the Adjusted R-Squared. A benefit of using forward/backward selection is that potential
+colinearity between features will be implicitly handled since redundant features get discarded.
+
+The best variable count according to Mallow`s Cp is where the variable count is both close to the Mallow`s Cp value and is small.
+Consulting \cref{fig:mallowcp} we see that with forward selection a variable count of 9 as the smallest Cp value and its
+Cp value is 8.605 which is relatively close to 9, and with backward selection a variable count of 9 is the best because it
+has a Cp value of 8.542. Although a variable count of 10-15 have smaller Cp values for backward selection, their Cp values are not
+very close to their respective variable counts which makes these variable counts not as optimal. Both forward and backward
+selection suggest that 9 variable counts is optimal.
+
+The best variable count according to BIC is the variable count with the smallest BIC value. According to \cref{fig:bic}, with
+forward selection a variable count of 7 has the smallest BIC. While with backward selection a variable count of 8 has the smallest
+BIC value. In general, a variable count of 7-8 seems to be optimal for the BIC test.
+
+The best value for Adjusted R-Squared is the variable count with the largest Adjusted R-Squared value. Consulting \cref{fig:rsq}
+with forward selection a variable count of 17 has the largest Adjusted RSQ. Conversely, with backward selection a variable count
+of 14 has the largest Adjusted RSQ. Since forward and backward selection yielded different results, it is inconclusive whether 14
+or 17 is the best variable count. According to both figures, it appears that any variable count greater than 8 seems to have a
+good adjusted R-Squared.
+
+Overall, we would say that a variable count of 7-9 seems to consistently produce a good result according to the three criterias.
+To pick a variable count which is sound, we performed cross validation with variable counts of 7-9 and selected the
+variable count with the lowest Root Mean Squared Error (RMSE). After performing the cross validation, a variable count of 9 is selected.
+The summary for our best model is shown in \cref{fig:summary}.

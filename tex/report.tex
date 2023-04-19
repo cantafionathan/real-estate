@@ -1,0 +1,68 @@
+\documentclass[hidelinks]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{blindtext}
+\usepackage[parfill]{parskip} % for flush indenting
+\usepackage{amsmath, amsfonts, amsthm, amssymb, centernot, siunitx} % math symbols
+\usepackage{hyperref, cleveref}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{txfonts}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=R,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\geometry{a4paper,
+left=30mm,
+right=30mm,
+top=30mm}
+\linespread{1.2}
+
+\newtheoremstyle{break}
+{\topsep}{\topsep}%
+{\upshape}{}%
+{\bfseries}{}%
+{\newline}{}%
+\theoremstyle{break}
+\renewcommand{\section}[2]{\theoremstyle{break} \newtheorem*{thm#1}{#1}\begin{thm#1}#2\end{thm#1}}
+
+\date{April 13, 2023}
+\author{\texttt{Names Removed}}
+\title{%
+Real Estate Valuation Data Set Analysis }
+
+
+\begin{document}
+\maketitle
+\newpage
+\section{Introduction}{\input{introduction.tex}}
+\section{Location characterization}{\input{maps.tex}}
+\section{Trends in the data}{\input{trends.tex}}
+\section{Model Selection}{\input{model_selection.tex}}
+\newpage
+\section{Leverage and Influence}{\input{leverage.tex}}
+\section{Conclusion}{\input{conclusion.tex}}
+\newpage
+\section{Figures}{\input{figures.tex}}
+% \newpage
+% \section{R Script}{\input{r.tex}}
+\end{document}

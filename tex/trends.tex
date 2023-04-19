@@ -1,0 +1,30 @@
+We now seek any other relationships between the explanatory variables and the response variable ppua. Consider first the effect of
+the sell month on ppua. Looking at \cref{fig:seasonal} it appears that ppua may fluctuate according to a sinusoidal pattern. But
+with that said we have rather limited data, spanning a period of only 12 months and looking at the mean ppua
+(\cref{fig:seasonalmean}) does not reveal any pattern whatsoever. So although it is probably still worth exploring how seasonality
+affects ppua when fitting our models we should interpret results pertaining to the seasonality with a grain of salt.
+
+At first glance it would appear that the age of a house has a quadratic relationship with ppua. But after separating the data into
+urban and rural, we see that both groups show a linear relationship between age and ppua. See \cref{fig:age}. The reason that when
+viewed together the data may have appeared quadratic is because rural homes decay in ppua faster than urban homes do with respect
+to age, so the lines intersect to form a $v$ shape.
+
+Yet again the initial look is deceptive when looking at \cref{fig:mrt} which appears exponential in nature. However once divided
+into rural and urban groups we have a linear relationship with a small slope for urban homes, but still what seems like an
+exponential relationship for rural homes. One possible explanation for this difference is that the shape really is exponential but
+urban areas will have more MRT stations than rural areas over a smaller footprint and so most homes will be closer to an MRT
+station and over this range of distances the relationship looks linear. Some rural homes may happen to be close to an MRT station
+but most of them will be farther away spread out across a larger area, allowing us capture the full shape. The fact that we took
+the log-transform of ppua does in fact help with this.
+
+When urban and rural properties are taken together there is a linear trend of moderate positive slope between the number of nearby
+convenience stores and ppua, see \cref{fig:stores}. When separated, the relationship becomes almost a constant one for urban homes
+while for rural homes the linear trend becomes more pronounced. This makes sense for similar reasons as the results about MRT
+stations made sense. Notice however that even for rural houses there is little difference between the ppua of houses with between
+2 and 4 convenience stores. This could be explained by the fact that being close to 3 stores isn't practically any better than
+being close just 2 stores. Distance to the closest store may be a more useful feature. Perhaps the jump in ppua seen in
+rural home after being close to 5 or more stores is an artifact of having little data on these types of houses.
+
+The fact that patterns keep emerging in the data when we split into the urban and rural categories is a good sign that we did a
+good job of location characterization. It also worth noting that there are no obvious relationships between any two of the
+explanatory variables.

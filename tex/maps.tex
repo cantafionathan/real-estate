@@ -1,0 +1,10 @@
+Since we are interested in the difference between rural and urban homes, we need to be able to classify homes as either rural or
+urban. By using prominent dividing features of the district like rivers and major roads we divided the location into two regions,
+urban and rural as seen in \cref{fig:regions}. We now consider the distributions of ppua (price per unit area) for rural and urban
+homes separately. Looking at \cref{fig:boxplot} we see that the homes with the highest ppua are predominately urban while still
+being atypical compared to other urban homes. This \textit{could} be explained by noting that certain types of properties, such as
+luxury apartments which have high ppua, are expected to be more common in urban neighborhoods than rural ones while still being
+relatively uncommon overall. Regardless of the explanation, it makes sense to transform ppua by taking the logarithm so that these
+outlier values don't influence our models and interpretations disproportionately. For the remainder of this paper, ppua will refer
+to log-transformed ppua. As a final note, the ppua of urban homes appears to be noticeably higher on average than that of rural
+homes as seen in \cref{fig:ppuamap}.
